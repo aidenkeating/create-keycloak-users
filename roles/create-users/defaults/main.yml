@@ -1,0 +1,10 @@
+---
+rhsso_namespace: sso
+rhsso_realm: openshift
+rhsso_admin_realm: master
+rhsso_seed_users_email_format: user%d@example.com
+rhsso_seed_users_name_format: user%d
+rhsso_seed_users_count: 70
+rhsso_seed_users_password: openshift
+rhsso_validate_certs: no
+rhsso_admin_username: admin
