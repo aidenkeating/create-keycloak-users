@@ -1,7 +1,7 @@
 ---
 - name: "Get user: {{ username }}"
   uri:
-    url: "https://{{ rhsso_route }}/auth/admin/realms/{{ rhsso_realm }}/users?first=0&max=1&search={{ email }}"
+    url: "https://{{ rhsso_secure_route }}/auth/admin/realms/{{ rhsso_realm }}/users?first=0&max=1&search={{ email }}"
     method: GET
     validate_certs: "{{ rhsso_validate_certs }}"
     return_content: yes
@@ -12,7 +12,7 @@
 
 - name: Remove current user
   uri:
-    url: "https://{{ rhsso_route }}/auth/admin/realms/{{ rhsso_realm }}/users/{{ remove.json[0].id }}"
+    url: "https://{{ rhsso_secure_route }}/auth/admin/realms/{{ rhsso_realm }}/users/{{ remove.json[0].id }}"
     method: DELETE
     validate_certs: "{{ rhsso_validate_certs }}"
     body_format: json
@@ -23,7 +23,7 @@
 
 - name: "Create user: {{ username }}"
   uri:
-    url: "https://{{ rhsso_route }}/auth/admin/realms/{{ rhsso_realm }}/users"
+    url: "https://{{ rhsso_secure_route }}/auth/admin/realms/{{ rhsso_realm }}/users"
     method: POST
     body: "{{ lookup('template', './user.json.j2') }}"
     validate_certs: "{{ rhsso_validate_certs }}"
@@ -35,7 +35,7 @@
 
 - name: "Get user: {{ username }}"
   uri:
-    url: "https://{{ rhsso_route }}/auth/admin/realms/{{ rhsso_realm }}/users?first=0&max=1&search={{ email }}"
+    url: "https://{{ rhsso_secure_route }}/auth/admin/realms/{{ rhsso_realm }}/users?first=0&max=1&search={{ email }}"
     method: GET
     validate_certs: "{{ rhsso_validate_certs }}"
     return_content: yes
@@ -49,7 +49,7 @@
 
 - name: "Reset user password: {{ username }}"
   uri:
-    url: "https://{{ rhsso_route }}/auth/admin/realms/{{ rhsso_realm }}/users/{{ rhsso_eval_user_id }}/reset-password"
+    url: "https://{{ rhsso_secure_route }}/auth/admin/realms/{{ rhsso_realm }}/users/{{ rhsso_eval_user_id }}/reset-password"
     method: PUT
     body: "{{ lookup('template', './password-reset.json.j2') }}"
     validate_certs: "{{ rhsso_validate_certs }}"

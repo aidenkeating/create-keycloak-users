@@ -1,7 +1,9 @@
 # How to use
 
-Run
+* Login to your OpenShift cluster, using `oc`.
+
+* Run:
 
 ```
-ansible-playbook -i dil.inventory playbook.yml -e rhsso_route=secure-sso-sso.mycluster.com
+ansible-playbook -i dil.inventory playbook.yml
 ```
